@@ -1,0 +1,90 @@
+================================================================================
+PHASE 4E.3 — PLAN-ONLY 18-SCALE SWEEP EXECUTION & VALIDATION AUDIT LOG
+================================================================================
+Timestamp Start: 2026-10-31T16:25:08.139125+00:00
+Timestamp Completed: 2026-10-31T16:35:30.225581+00:00
+Repository: yoswinner/CompressionAwareRag
+Branch: research/planner-sensitivity
+Script: scripts/run_phase4e3_scale_sweep.py
+
+--- Step 1: Validating Closed-Form Seq Scan + Top-k Sort Equation ---
+Closed-form PostgreSQL 18.4 cost equation:
+  seqscan_total = relpages * seq_page_cost + N * (cpu_tuple_cost + cpu_operator_cost)
+  sort_startup = seqscan_total + 2.0 * cpu_operator_cost * N * log2(2.0 * k)
+  limit_total = sort_startup + (k / N) * (cpu_operator_cost * N) = sort_startup + k * cpu_operator_cost
+Validation result:
+  [PASSED] Validated across 54/54 exact-mode cells at N=1001 & N=5000
+  Max startup cost difference: 0.0000 cost units
+  Max total cost difference: 0.0000 cost units
+
+--- Step 2: Loading Canonical q0 Vector ---
+Source file: results/planner_sensitivity/phase3_tie_sensitivity_20261031/recovered_query_vectors.csv
+Query ID: 0 (Dimension: 768)
+Query Text: "what is routing in computer networks"
+Verified SHA-256 (UTF-8 JSON string): 4a0428709013d77d8d284b369cb144734421bfdc4f6e4a83faf17db8114cf478
+Verified IEEE-754 Float32 Little-Endian SHA-256: 3f5a10a6816f561587d427c56c11ec08586b587690262df8a8060150341969dd
+Status: PASSED (Zero Ollama calls, zero embedding regenerations)
+
+--- Step 3: Snapshotting Existing Database Objects ---
+Target databases: compression_aware_rag_exp, compression_aware_rag_scale
+Snapshotted catalog objects: 32 objects (OID, relfilenode, relpages, reltuples)
+Status: RECORDED
+
+--- Step 4: Non-Destructive Provisioning of 16 Intermediate Scales ---
+Target database: compression_aware_rag_scale (schema: planner_sensitivity)
+Source table: public.chunks_10k_fp32 (10,000 rows, verified dim=768)
+Method: Deterministic SELECT chunk_id, embedding FROM public.chunks_10k_fp32 ORDER BY chunk_id ASC LIMIT N
+Precheck: Verified zero destination tables or indexes exist prior to creation.
+Scales provisioned: 500, 700, 750, 780, 785, 786, 787, 788, 790, 850, 1250, 1500, 1750, 2000, 3000, 4000
+Representations per scale: fp32_extended, fp32_plain, fp16_extended (48 tables total)
+HNSW index parameters: m=16, ef_construction=64 (48 indexes total)
+Table Provisioning Runtime: 5.7500 s
+Index Construction + ANALYZE Runtime: 31.6700 s
+In-place Reused Scales:
+  - N=1001: compression_aware_rag_exp.planner_sensitivity (3 tables, 3 indexes)
+  - N=5000: compression_aware_rag_scale.planner_sensitivity (3 tables, 3 indexes)
+Status: COMPLETED (Zero existing tables dropped or modified)
+
+--- Step 5: Catalog and Storage Metrics Collection ---
+Tables inspected: 54 (18 scales x 3 representations)
+Verified: row counts exact, relpages > 0, index_pages > 0, storage policies correct.
+Status: EXPORTED to scale_sweep_storage.csv (54 rows)
+
+--- Step 6: Read-Only EXPLAIN Captures ---
+Modes: planner_selected, forced_hnsw
+Captures executed: 972 (18 scales x 3 reps x 9 profiles x 2 modes x 1 query)
+Capture runtime: 5.0570 s
+Status: EXPORTED to scale_sweep_plans.jsonl (972 JSONL records)
+Forced-HNSW assertion: 486/486 forced_hnsw captures verified to select Index Scan on expected index.
+
+--- Step 7: Candidate Cost Reconciliation & Fuzzy Tiebreak Analysis ---
+Reconciliation status:
+  - Strict minimum total cost match: 485/486 cells
+  - PostgreSQL compare_path_costs_fuzzily (STD_FUZZ_FACTOR = 1.01) tiebreak: 1 cell
+Exception details:
+  Scale: N = 850, Representation: fp32_plain, Profile: P6 (random_page_cost = 4.0, cpu_operator_cost = 0.05)
+  Candidate Costs:
+    - Limit -> Sort -> Seq Scan: Startup = 843.36, Total = 843.86
+    - Limit -> HNSW Index Scan: Startup = 814.52, Total = 846.04 (+2.18 cost units, +0.258%)
+  PostgreSQL Optimizer Resolution:
+    846.04 <= 1.01 * 843.86 = 852.30 -> Total costs are fuzzily tied within 1%.
+    Startup cost comparison: 814.52 < 843.36 / 1.01 = 835.01 -> HNSW wins on lower startup cost.
+    Planner selected: Index Scan (chunks_850_fp32_plain_hnsw_idx).
+Status: FULLY RECONCILED (Valid optimizer behavior under PostgreSQL 18.4 source)
+
+--- Step 8: Database Invariance Verification ---
+Post-execution catalog snapshot comparison:
+  - compression_aware_rag_exp: 11/11 objects identical OID, relfilenode, relpages, reltuples
+  - compression_aware_rag_scale: 21/21 pre-existing objects identical OID, relfilenode, relpages, reltuples
+Total preserved objects: 32/32 verified unchanged.
+Status: PASSED
+
+--- Step 9: Final Validation Suite ---
+  - Plans count: 972/972 (0 missing, 0 duplicates)
+  - Summary rows: 486/486 (0 missing, 0 duplicates)
+  - Storage rows: 54/54 (0 missing, 0 duplicates)
+  - Analytical guard recomputation: 486/486 PASSED
+  - Database table verification: 18/18 scales fully_provisioned PASSED
+Status: ALL VALIDATION CHECKS PASSED
+================================================================================
+

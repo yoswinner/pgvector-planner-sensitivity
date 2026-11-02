@@ -1,0 +1,9 @@
+# Optional Legacy Prototype & Upstream Ingestion Dependencies
+# Required only for running legacy prototype scripts (e.g. src/ingestion.py)
+# or live Ollama embedding generation via nomic-embed-text.
+
+requests>=2.31.0
+tqdm>=4.66.0
+datasets>=2.16.0
+numpy>=1.26.0
+

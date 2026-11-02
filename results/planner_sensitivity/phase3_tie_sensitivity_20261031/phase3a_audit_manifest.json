@@ -1,0 +1,76 @@
+{
+  "audit_title": "Phase 3A: Boundary-Tie Threshold Sensitivity and Query-Vector Validation",
+  "timestamp_utc": "2026-10-30T20:33:23.864213+00:00",
+  "git_commit": "8dfdce0a00338d0c6e0c4f70ea3e83d40e9b93ee",
+  "base_phase2_directory": "C:\\Coding\\GenAI\\Projects\\CompressionAwareRag\\results\\planner_sensitivity\\full_run_20261031_01",
+  "audit_output_directory": "C:\\Coding\\GenAI\\Projects\\CompressionAwareRag\\results\\planner_sensitivity\\phase3_tie_sensitivity_20261031",
+  "reconciliation_summary": {
+    "total_query_condition_units": 1980,
+    "total_reconciled_matches": 1980,
+    "total_reconciled_mismatches": 0,
+    "reconciliation_status": "PASSED",
+    "rounding_tolerance": 5e-05
+  },
+  "query_vector_recovery": {
+    "total_unique_queries": 20,
+    "dimension": 768,
+    "source_artifact": "plan_capture.jsonl (FP32 representations)",
+    "verification_status": "IDENTICAL_ACROSS_ALL_OCCURRENCES"
+  },
+  "threshold_sensitivity": {
+    "evaluated_epsilons": [
+      "1.0e-07",
+      "1.0e-06",
+      "1.0e-05"
+    ],
+    "total_observations": 5940,
+    "tie_prevalence_unique_queries": {
+      "scale_1001_eps_1.0e-05": [
+        5,
+        13,
+        16
+      ],
+      "scale_1001_eps_1.0e-06": [
+        5,
+        13,
+        16
+      ],
+      "scale_1001_eps_1.0e-07": [
+        5,
+        13,
+        16
+      ],
+      "scale_5000_eps_1.0e-05": [
+        3,
+        9,
+        17
+      ],
+      "scale_5000_eps_1.0e-06": [
+        3,
+        9
+      ],
+      "scale_5000_eps_1.0e-07": [
+        3,
+        9
+      ],
+      "scale_10000_eps_1.0e-05": [
+        9
+      ],
+      "scale_10000_eps_1.0e-06": [
+        9
+      ],
+      "scale_10000_eps_1.0e-07": [
+        9
+      ]
+    }
+  },
+  "artifacts_generated": {
+    "recovered_query_vectors_csv": "recovered_query_vectors.csv",
+    "fp32_reference_boundary_groups_csv": "fp32_reference_boundary_groups.csv",
+    "tie_sensitivity_query_results_csv": "tie_sensitivity_query_results.csv",
+    "phase2_recall_reconciliation_csv": "phase2_recall_reconciliation.csv",
+    "tie_sensitivity_summary_csv": "tie_sensitivity_summary.csv",
+    "phase3a_audit_manifest_json": "phase3a_audit_manifest.json",
+    "phase3a_console_log": "phase3a_console.log"
+  }
+}

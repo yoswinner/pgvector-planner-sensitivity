@@ -1,0 +1,41 @@
+{
+  "title": "Phase 3A.1 Evidence Chain Closure Addendum",
+  "timestamp_utc": "2026-10-30T21:04:54.340590+00:00",
+  "git_commit": "8dfdce0a00338d0c6e0c4f70ea3e83d40e9b93ee",
+  "base_phase3a_directory": "C:\\Coding\\GenAI\\Projects\\CompressionAwareRag\\results\\planner_sensitivity\\phase3_tie_sensitivity_20261031",
+  "addendum_output_directory": "C:\\Coding\\GenAI\\Projects\\CompressionAwareRag\\results\\planner_sensitivity\\phase3a_evidence_addendum_20261031",
+  "fp32_reference_top10": {
+    "total_rows": 600,
+    "scales_covered": [
+      1001,
+      5000,
+      10000
+    ],
+    "queries_per_scale": 20,
+    "ranks_per_query": 10,
+    "ordering_policy": "ORDER BY distance ASC LIMIT 10 without secondary tie-breaker"
+  },
+  "conventional_recall_reconciliation": {
+    "total_units_evaluated": 1980,
+    "matches_with_phase3a": 1980,
+    "matches_with_phase2": 1980,
+    "mismatches": 0
+  },
+  "forced_hnsw_guc_equivalence": {
+    "total_units_evaluated": 180,
+    "strictly_equivalent_units": 180,
+    "discrepancies": 0
+  },
+  "script_provenance": {
+    "byte_identical": true,
+    "script_sha256": "57d37e06097fe79e7bf0ff60f375c349a407dd0efd333c846127455e7240a97e"
+  },
+  "artifacts_generated": {
+    "fp32_reference_top10_ids_csv": "fp32_reference_top10_ids.csv",
+    "conventional_recall_independent_reconciliation_csv": "conventional_recall_independent_reconciliation.csv",
+    "phase3a_guc_equivalence_audit_csv": "phase3a_guc_equivalence_audit.csv",
+    "script_provenance_audit_json": "script_provenance_audit.json",
+    "phase3a_evidence_addendum_manifest_json": "phase3a_evidence_addendum_manifest.json",
+    "phase3a_evidence_addendum_report_md": "phase3a_evidence_addendum_report.md"
+  }
+}

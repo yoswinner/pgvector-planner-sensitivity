@@ -1,0 +1,151 @@
+{
+  "phase": "Phase 4E.3 — Plan-Only 18-Scale Sweep",
+  "workflow_timestamps": {
+    "workflow_start": "2026-10-31T16:25:08.139125+00:00",
+    "workflow_completed": "2026-10-31T16:35:30.225581+00:00",
+    "workflow_elapsed_seconds": 622.086,
+    "artifact_finalization_start": "2026-10-31T16:35:28.139125+00:00",
+    "artifact_finalization_completed": "2026-10-31T16:35:30.225581+00:00",
+    "artifact_finalization_elapsed_seconds": 2.086
+  },
+  "runtime_seconds": {
+    "table_provisioning_seconds": 5.75,
+    "index_construction_seconds": 31.67,
+    "explain_capture_seconds": 5.057,
+    "sum_recorded_phase_durations_seconds": 42.477,
+    "end_to_end_wall_clock_seconds": null
+  },
+  "runtime_provenance_note": "42.477s reflects the arithmetic sum of recorded phase durations (table provisioning: 5.75s, index construction/analyze: 31.67s, explain capture: 5.057s), not an independently verified continuous end-to-end wall-clock measurement. The overall workflow span was 622.086s (16:25:08 to 16:35:30 UTC), encompassing initial execution, tiebreak diagnosis, validation suite, and finalization. The artifact-finalization pass executed in 2.086s. End-to-end continuous wall-clock time is marked as null (unavailable). See timing_provenance_note.md for full details.",
+  "matrix": {
+    "scales": [
+      500,
+      700,
+      750,
+      780,
+      785,
+      786,
+      787,
+      788,
+      790,
+      850,
+      1001,
+      1250,
+      1500,
+      1750,
+      2000,
+      3000,
+      4000,
+      5000
+    ],
+    "reused_in_place_scales": {
+      "1001": "compression_aware_rag_exp",
+      "5000": "compression_aware_rag_scale"
+    },
+    "newly_provisioned_scales": [
+      500,
+      700,
+      750,
+      780,
+      785,
+      786,
+      787,
+      788,
+      790,
+      850,
+      1250,
+      1500,
+      1750,
+      2000,
+      3000,
+      4000
+    ],
+    "representations": [
+      "fp32_extended",
+      "fp32_plain",
+      "fp16_extended"
+    ],
+    "profiles": [
+      "P1",
+      "P2",
+      "P3",
+      "P4",
+      "P5",
+      "P6",
+      "P7",
+      "P8",
+      "P9"
+    ],
+    "modes": [
+      "planner_selected",
+      "forced_hnsw"
+    ],
+    "query_id": 0,
+    "query_sha256": "4a0428709013d77d8d284b369cb144734421bfdc4f6e4a83faf17db8114cf478",
+    "total_primary_captures": 972,
+    "total_summary_rows": 486,
+    "total_storage_rows": 54
+  },
+  "validation": {
+    "closed_form_seqscan_sort_validation": {
+      "status": "PASSED",
+      "cells_checked": 54,
+      "max_startup_cost_diff": 0.0,
+      "max_total_cost_diff": 0.0
+    },
+    "final_validation_suite": {
+      "plans_count": 972,
+      "summaries_count": 486,
+      "storages_count": 54,
+      "unique_plan_keys": 972,
+      "unique_summary_keys": 486,
+      "unique_storage_keys": 54,
+      "independent_guard_recomputation": "PASSED (486/486)",
+      "all_54_tables_and_hnsw_indexes_verified": "PASSED (18/18 scales fully_provisioned)",
+      "existing_tables_unchanged": "PASSED (32/32 catalog objects unchanged)"
+    },
+    "strict_min_total_cost_matches": "485/486",
+    "fuzzy_1pct_startup_tiebreak_exceptions": [
+      {
+        "scale": 850,
+        "representation": "fp32_plain",
+        "profile_id": "P6",
+        "selected_plan_type": "Index Scan",
+        "hnsw_startup_cost": 814.52,
+        "hnsw_limit_total_cost": 846.04,
+        "seqscan_sort_startup_cost": 843.36,
+        "seqscan_sort_total_cost": 843.86,
+        "total_cost_ratio": 1.002583,
+        "explanation": "In PostgreSQL compare_path_costs_fuzzily (STD_FUZZ_FACTOR=1.01), hnsw_limit_total (846.04) <= 1.01 * seqscan_sort_total (852.30), so total costs are fuzzily tied and HNSW wins on lower startup_cost (814.52 < 843.36)."
+      }
+    ]
+  },
+  "artifacts": {
+    "scale_sweep_plans_jsonl": {
+      "path": "c:\\Coding\\GenAI\\Projects\\CompressionAwareRag\\results\\planner_sensitivity\\scale_sweep_plan_only\\scale_sweep_plans.jsonl",
+      "sha256": "6887af68eaf0c594c4ee0ce8cfa0be50172b41eb37e97444368d99cf6cabcb7f",
+      "records": 972
+    },
+    "scale_sweep_summary_csv": {
+      "path": "c:\\Coding\\GenAI\\Projects\\CompressionAwareRag\\results\\planner_sensitivity\\scale_sweep_plan_only\\scale_sweep_summary.csv",
+      "sha256": "d91e80c7cd0ec617bbac1f3816c8a947bd2e6f787a785ab59a3c11dcaf6d4368",
+      "rows": 486
+    },
+    "scale_sweep_storage_csv": {
+      "path": "c:\\Coding\\GenAI\\Projects\\CompressionAwareRag\\results\\planner_sensitivity\\scale_sweep_plan_only\\scale_sweep_storage.csv",
+      "sha256": "58ad9538c7a9df0afc8e9491aedb7cb8becb1984ded5cea6d84d7b094c20dca9",
+      "rows": 54
+    },
+    "scale_sweep_analysis_md": {
+      "path": "c:\\Coding\\GenAI\\Projects\\CompressionAwareRag\\results\\planner_sensitivity\\scale_sweep_plan_only\\scale_sweep_analysis.md",
+      "sha256": "2941423693bd93e524f01710345e96779b0a77b158b5844aa9fde3f81083e1e0"
+    },
+    "q0_hash_reconciliation_md": {
+      "path": "c:\\Coding\\GenAI\\Projects\\CompressionAwareRag\\results\\planner_sensitivity\\scale_sweep_plan_only\\q0_hash_reconciliation.md",
+      "sha256": "f5fa567ba81fb5f31d4da3277fb48a56952015fbdfbdd5ddf2d129f41a38e43f"
+    },
+    "timing_provenance_note_md": {
+      "path": "c:\\Coding\\GenAI\\Projects\\CompressionAwareRag\\results\\planner_sensitivity\\scale_sweep_plan_only\\timing_provenance_note.md",
+      "sha256": "da0fb1c4992ebe545f8e4232b21fe0f3d1c5b495cedbd36e173c9db96a69beb1"
+    }
+  }
+}

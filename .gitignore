@@ -1,0 +1,40 @@
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+.cache/
+
+# Environments and credentials (DO NOT COMMIT SECRETS)
+.env
+.venv/
+env/
+venv/
+ENV/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
+~$*
+
+# Raw external datasets (Microsoft Open Data License - do not redistribute raw text)
+data/raw/*.tsv
+data/processed/
+!data/raw/*.meta.json
+
+# Large raw execution traces and database logs (> 2 MB)
+results/**/plan_capture.jsonl
+results/**/diagnostic_results.jsonl
+results/**/exact_mode_cost_validation.jsonl
+results/**/scale_sweep_plans.jsonl
+results/**/*.log
+!results/planner_sensitivity/scale_sweep_plan_only/execution_and_validation.log
+!results/planner_sensitivity/phase3_tie_sensitivity_20261031/phase3a_console.log
+
+# Temporary and duplicate zip archives
+*.zip
+paper/*.zip
+

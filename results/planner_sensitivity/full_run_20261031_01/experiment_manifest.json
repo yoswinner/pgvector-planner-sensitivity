@@ -1,0 +1,246 @@
+{
+  "experiment_title": "Precision-Aware Query Planning for Vector Retrieval in PostgreSQL",
+  "timestamp_start": "2026-10-30T19:10:34.789998+00:00",
+  "timestamp_completed": "2026-10-30T19:12:19.312129+00:00",
+  "random_seed": 42,
+  "git_commit": "3f2beee66cecd67aa8fc4cec69c364b92c07b884",
+  "output_directory": "C:\\Coding\\GenAI\\Projects\\CompressionAwareRag\\results\\planner_sensitivity\\full_run_20261031_01",
+  "status_summary": {
+    "execution_count_validation_status": "PASSED",
+    "latency_dataset_completeness_status": "COMPLETE",
+    "diagnostic_dataset_completeness_status": "COMPLETE",
+    "overall_experiment_status": "COMPLETE"
+  },
+  "execution_count_validation_status": "PASSED",
+  "latency_dataset_completeness_status": "COMPLETE",
+  "diagnostic_dataset_completeness_status": "COMPLETE",
+  "overall_experiment_status": "COMPLETE",
+  "scales_evaluated": [
+    1001,
+    5000,
+    10000
+  ],
+  "representations_evaluated": [
+    "fp32_extended",
+    "fp32_plain",
+    "fp16_extended"
+  ],
+  "profiles_evaluated": [
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7",
+    "P8",
+    "P9"
+  ],
+  "canonical_forced_profile": "P4",
+  "modes_evaluated": [
+    "exact",
+    "forced_hnsw",
+    "planner_selected"
+  ],
+  "top_k": 10,
+  "numerical_tolerance_policy": {
+    "primary_tolerance": 1e-06,
+    "sensitivity_tolerances": [
+      1e-07,
+      1e-06,
+      1e-05
+    ],
+    "description": "1.0e-6 operational numerical-equivalence threshold (with sensitivity checks across 1e-7 and 1e-5). Serves as an operational convention for identifying boundary distance ties across 768-dimensional vector dot-product and norm accumulations under hardware floating-point math, and is not a mathematically proven IEEE-754 error bound."
+  },
+  "workload_specification": {
+    "num_scales": 3,
+    "num_representations": 3,
+    "num_profiles": 9,
+    "num_queries": 20,
+    "measured_passes": 5,
+    "warmup_passes": 2,
+    "rep_scale_combinations": 9,
+    "canonical_forced_profile_id": "P4",
+    "timed_planner_selected": 8100,
+    "timed_forced_exact": 900,
+    "timed_forced_hnsw": 900,
+    "total_timed_executions": 9900,
+    "total_warmup_executions": 3960,
+    "total_plan_captures": 4860,
+    "total_diagnostic_executions": 540
+  },
+  "actual_workload": {
+    "timed_executions": 9900,
+    "warmup_executions": 3960,
+    "plan_captures": 4860,
+    "diagnostic_executions": 540
+  },
+  "latency_accounting": {
+    "expected": 9900,
+    "attempted": 9900,
+    "successful": 9900,
+    "failed": 0,
+    "dataset_status": "complete",
+    "errors": []
+  },
+  "diagnostic_accounting": {
+    "expected": 540,
+    "attempted": 540,
+    "successful": 540,
+    "failed": 0,
+    "dataset_status": "complete",
+    "errors": []
+  },
+  "workload_validation": "PASSED",
+  "total_timing_trials": 9900,
+  "total_summary_configurations": 243,
+  "sample_execution_sequence": [
+    {
+      "pass_id": 1,
+      "rep": "fp16_extended",
+      "profile_id": "P4",
+      "mode": "forced_hnsw",
+      "query_id": 5
+    },
+    {
+      "pass_id": 1,
+      "rep": "fp16_extended",
+      "profile_id": "P4",
+      "mode": "planner_selected",
+      "query_id": 10
+    },
+    {
+      "pass_id": 1,
+      "rep": "fp32_extended",
+      "profile_id": "P7",
+      "mode": "planner_selected",
+      "query_id": 1
+    },
+    {
+      "pass_id": 1,
+      "rep": "fp32_plain",
+      "profile_id": "P7",
+      "mode": "planner_selected",
+      "query_id": 9
+    },
+    {
+      "pass_id": 1,
+      "rep": "fp16_extended",
+      "profile_id": "P1",
+      "mode": "planner_selected",
+      "query_id": 16
+    },
+    {
+      "pass_id": 1,
+      "rep": "fp32_plain",
+      "profile_id": "P5",
+      "mode": "planner_selected",
+      "query_id": 3
+    },
+    {
+      "pass_id": 1,
+      "rep": "fp16_extended",
+      "profile_id": "P4",
+      "mode": "planner_selected",
+      "query_id": 17
+    },
+    {
+      "pass_id": 1,
+      "rep": "fp32_extended",
+      "profile_id": "P8",
+      "mode": "planner_selected",
+      "query_id": 19
+    },
+    {
+      "pass_id": 1,
+      "rep": "fp32_extended",
+      "profile_id": "P5",
+      "mode": "planner_selected",
+      "query_id": 9
+    },
+    {
+      "pass_id": 1,
+      "rep": "fp32_plain",
+      "profile_id": "P2",
+      "mode": "planner_selected",
+      "query_id": 9
+    },
+    {
+      "pass_id": 1,
+      "rep": "fp32_plain",
+      "profile_id": "P7",
+      "mode": "planner_selected",
+      "query_id": 6
+    },
+    {
+      "pass_id": 1,
+      "rep": "fp32_plain",
+      "profile_id": "P4",
+      "mode": "forced_hnsw",
+      "query_id": 19
+    },
+    {
+      "pass_id": 1,
+      "rep": "fp16_extended",
+      "profile_id": "P7",
+      "mode": "planner_selected",
+      "query_id": 8
+    },
+    {
+      "pass_id": 1,
+      "rep": "fp16_extended",
+      "profile_id": "P6",
+      "mode": "planner_selected",
+      "query_id": 19
+    },
+    {
+      "pass_id": 1,
+      "rep": "fp32_extended",
+      "profile_id": "P4",
+      "mode": "planner_selected",
+      "query_id": 17
+    },
+    {
+      "pass_id": 1,
+      "rep": "fp32_plain",
+      "profile_id": "P2",
+      "mode": "planner_selected",
+      "query_id": 1
+    },
+    {
+      "pass_id": 1,
+      "rep": "fp16_extended",
+      "profile_id": "P4",
+      "mode": "exact",
+      "query_id": 14
+    },
+    {
+      "pass_id": 1,
+      "rep": "fp32_extended",
+      "profile_id": "P4",
+      "mode": "planner_selected",
+      "query_id": 5
+    },
+    {
+      "pass_id": 1,
+      "rep": "fp16_extended",
+      "profile_id": "P4",
+      "mode": "forced_hnsw",
+      "query_id": 3
+    },
+    {
+      "pass_id": 1,
+      "rep": "fp32_extended",
+      "profile_id": "P4",
+      "mode": "forced_hnsw",
+      "query_id": 11
+    }
+  ],
+  "artifacts": {
+    "environment_snapshot": "results/planner_sensitivity/full_run_20261031_01\\environment_snapshot.json",
+    "plan_capture_jsonl": "results/planner_sensitivity/full_run_20261031_01\\plan_capture.jsonl",
+    "latency_results_csv": "results/planner_sensitivity/full_run_20261031_01\\latency_results.csv",
+    "diagnostic_results_jsonl": "results/planner_sensitivity/full_run_20261031_01\\diagnostic_results.jsonl",
+    "summary_results_csv": "results/planner_sensitivity/full_run_20261031_01\\summary_results.csv"
+  }
+}

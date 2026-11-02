@@ -1,0 +1,39 @@
+[OK] Preserving console output to C:\Coding\GenAI\Projects\CompressionAwareRag\results\planner_sensitivity\phase3_tie_sensitivity_20261031\phase3a_console.log
+
+--- Step 1: Recovering 20 Query Vectors from plan_capture.jsonl ---
+[RECOVERED] Successfully extracted exactly 20 unique query vectors (IDs 0..19).
+[VERIFIED] Each query vector matched identically across all 162 FP32 plan records.
+[EXPORTED] Recovered query vectors written to C:\Coding\GenAI\Projects\CompressionAwareRag\results\planner_sensitivity\phase3_tie_sensitivity_20261031\recovered_query_vectors.csv
+
+--- Step 2: Reconstructing FP32 Exact Reference Distances and Boundary Sets ---
+Processing scale 1001 on 'compression_aware_rag_exp' (chunks_1001_fp32_extended)...
+Processing scale 5000 on 'compression_aware_rag_scale' (chunks_5000_fp32_extended)...
+Processing scale 10000 on 'compression_aware_rag_scale' (chunks_10000_fp32_extended)...
+[EXPORTED] FP32 reference boundary sets (180 rows) written to C:\Coding\GenAI\Projects\CompressionAwareRag\results\planner_sensitivity\phase3_tie_sensitivity_20261031\fp32_reference_boundary_groups.csv
+
+--- Step 3: Loading Phase 2 Baseline Metrics for Reconciliation ---
+[LOADED] Phase 2 latency lookup units: 1980 (expected 1,980)
+[LOADED] Phase 2 plan lookup entries: 4860
+
+--- Step 4: Recomputing 1,980 Candidate Retrievals & Multi-Threshold Metrics ---
+
+Processing scale 1001 on 'compression_aware_rag_exp'...
+
+Processing scale 5000 on 'compression_aware_rag_scale'...
+
+Processing scale 10000 on 'compression_aware_rag_scale'...
+
+[RECONCILIATION COMPLETE] Total units audited: 1980
+[RECONCILIATION RESULT] Matches: 1980, Mismatches: 0
+[EXPORTED] Detailed query sensitivity results (5,940 rows) written to C:\Coding\GenAI\Projects\CompressionAwareRag\results\planner_sensitivity\phase3_tie_sensitivity_20261031\tie_sensitivity_query_results.csv
+[EXPORTED] Phase 2 reconciliation audit (1,980 rows) written to C:\Coding\GenAI\Projects\CompressionAwareRag\results\planner_sensitivity\phase3_tie_sensitivity_20261031\phase2_recall_reconciliation.csv
+
+--- Step 5: Generating Tie Sensitivity Summary Statistics ---
+[EXPORTED] Tie sensitivity summary written to C:\Coding\GenAI\Projects\CompressionAwareRag\results\planner_sensitivity\phase3_tie_sensitivity_20261031\tie_sensitivity_summary.csv
+
+--- Step 6: Exporting Audit Manifest to C:\Coding\GenAI\Projects\CompressionAwareRag\results\planner_sensitivity\phase3_tie_sensitivity_20261031\phase3a_audit_manifest.json ---
+[EXPORTED] Audit manifest successfully generated.
+
+================================================================================
+PHASE 3A AUDIT COMPLETE in 12.83s
+================================================================================

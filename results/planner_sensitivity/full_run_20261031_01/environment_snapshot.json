@@ -1,0 +1,129 @@
+{
+  "timestamp": "2026-10-30T19:10:36.007873+00:00",
+  "database": "compression_aware_rag_exp",
+  "postgresql_version": "PostgreSQL 18.4 on x86_64-windows, compiled by msvc-19.44.35227, 64-bit",
+  "pgvector_version": "0.8.4",
+  "python_version": "3.13.14",
+  "psycopg_version": "3.3.4",
+  "prepare_threshold": null,
+  "automatic_prepared_statements_disabled": true,
+  "platform": {
+    "system": "Windows",
+    "release": "11",
+    "machine": "AMD64",
+    "processor": "Intel64 Family 6 Model 170 Stepping 4, GenuineIntel",
+    "cpu_count": 22,
+    "physical_memory_gb": 31.43,
+    "available_memory_gb": 15.08
+  },
+  "git_commit": "3f2beee66cecd67aa8fc4cec69c364b92c07b884",
+  "active_pg_settings": {
+    "cpu_index_tuple_cost": {
+      "setting": "0.005",
+      "unit": null,
+      "boot_val": "0.005",
+      "reset_val": "0.005",
+      "source": "default"
+    },
+    "cpu_operator_cost": {
+      "setting": "0.0025",
+      "unit": null,
+      "boot_val": "0.0025",
+      "reset_val": "0.0025",
+      "source": "default"
+    },
+    "cpu_tuple_cost": {
+      "setting": "0.01",
+      "unit": null,
+      "boot_val": "0.01",
+      "reset_val": "0.01",
+      "source": "default"
+    },
+    "effective_cache_size": {
+      "setting": "524288",
+      "unit": "8kB",
+      "boot_val": "524288",
+      "reset_val": "524288",
+      "source": "default"
+    },
+    "enable_bitmapscan": {
+      "setting": "on",
+      "unit": null,
+      "boot_val": "on",
+      "reset_val": "on",
+      "source": "default"
+    },
+    "enable_indexscan": {
+      "setting": "on",
+      "unit": null,
+      "boot_val": "on",
+      "reset_val": "on",
+      "source": "default"
+    },
+    "enable_seqscan": {
+      "setting": "on",
+      "unit": null,
+      "boot_val": "on",
+      "reset_val": "on",
+      "source": "default"
+    },
+    "maintenance_work_mem": {
+      "setting": "65536",
+      "unit": "kB",
+      "boot_val": "65536",
+      "reset_val": "65536",
+      "source": "default"
+    },
+    "max_parallel_maintenance_workers": {
+      "setting": "2",
+      "unit": null,
+      "boot_val": "2",
+      "reset_val": "2",
+      "source": "default"
+    },
+    "max_parallel_workers": {
+      "setting": "8",
+      "unit": null,
+      "boot_val": "8",
+      "reset_val": "8",
+      "source": "default"
+    },
+    "max_parallel_workers_per_gather": {
+      "setting": "2",
+      "unit": null,
+      "boot_val": "2",
+      "reset_val": "2",
+      "source": "default"
+    },
+    "random_page_cost": {
+      "setting": "4",
+      "unit": null,
+      "boot_val": "4",
+      "reset_val": "4",
+      "source": "default"
+    },
+    "seq_page_cost": {
+      "setting": "1",
+      "unit": null,
+      "boot_val": "1",
+      "reset_val": "1",
+      "source": "default"
+    },
+    "shared_buffers": {
+      "setting": "16384",
+      "unit": "8kB",
+      "boot_val": "16384",
+      "reset_val": "16384",
+      "source": "configuration file"
+    },
+    "work_mem": {
+      "setting": "4096",
+      "unit": "kB",
+      "boot_val": "4096",
+      "reset_val": "4096",
+      "source": "default"
+    }
+  },
+  "active_hnsw_ef_search": "unknown",
+  "baseline_random_page_cost": "4"
+}

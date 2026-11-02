@@ -1,0 +1,16 @@
+{
+  "audit_item": "Phase 3A Audit Script Provenance",
+  "disk_script": {
+    "path": "C:\\Coding\\GenAI\\Projects\\CompressionAwareRag\\scripts\\run_phase3a_tie_sensitivity.py",
+    "size_bytes": 36107,
+    "sha256": "57d37e06097fe79e7bf0ff60f375c349a407dd0efd333c846127455e7240a97e"
+  },
+  "archived_script": {
+    "archive_path": "C:\\Coding\\GenAI\\Projects\\CompressionAwareRag\\Phase3A_Tie_Sensitivity_Evidence_20261031.zip",
+    "entry_name": "Phase3A_Tie_Sensitivity_Evidence_20261031/run_phase3a_tie_sensitivity.py",
+    "size_bytes": 36107,
+    "sha256": "57d37e06097fe79e7bf0ff60f375c349a407dd0efd333c846127455e7240a97e"
+  },
+  "byte_identical": true,
+  "verification_statement": "The script on disk (scripts/run_phase3a_tie_sensitivity.py) and the script archived in Phase3A_Tie_Sensitivity_Evidence_20261031.zip are 100% byte-identical. The console log (phase3a_console.log) confirms that this exact script generated the Phase 3A evidence."
+}
