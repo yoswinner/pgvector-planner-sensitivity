@@ -5,12 +5,27 @@
 [![pgvector 0.8.4](https://img.shields.io/badge/pgvector-0.8.4-orange.svg)](https://github.com/pgvector/pgvector)
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![Tests: 77 passed](https://img.shields.io/badge/Tests-77%20passed-brightgreen.svg)](tests/)
+[![Manuscript](https://img.shields.io/badge/Manuscript-Final%20Submission-blueviolet.svg)](paper/Precision_Aware_Vector_Retrieval_Final.pdf)
 
 This repository contains the authoritative research codebase, empirical benchmark data, statistical analysis pipelines, and publication figures for the study:
 
-> **"How FP16 Vector Representation and TOAST Storage Layouts Shift Query Plan Selection in PostgreSQL: An Empirical and Cost-Model Study"** (Manuscript V1.3.3 Accepted Baseline; V1.3.2 preserved for historical audit traceability).
+> **"How FP16 Vector Representation and TOAST Storage Layouts Shift Query Plan Selection in PostgreSQL: An Empirical and Cost-Model Study"** (Final Submission Documents; V1.3.5 Accepted Baseline; V1.3.3 and V1.3.2 preserved for historical audit traceability).
 
 > **Bounded Reproduction Scope**: Preserved evidence supports offline reproduction of post-collection cost-model calculations, statistics, bootstrap confidence intervals, tables and figures. It does not establish full from-scratch reproduction of corpus acquisition, embeddings or physical database/index state.
+
+---
+
+## Final Submission Documents
+
+The final research paper publication documents are available in the [paper/](paper/) directory:
+- **PDF Document:** [paper/Precision_Aware_Vector_Retrieval_Final.pdf](paper/Precision_Aware_Vector_Retrieval_Final.pdf)
+- **Word Document (Editable):** [paper/Precision_Aware_Vector_Retrieval_Final.docx](paper/Precision_Aware_Vector_Retrieval_Final.docx)
+- **Canonical Markdown Source:** [paper/Precision_Aware_Vector_Retrieval_Source.md](paper/Precision_Aware_Vector_Retrieval_Source.md)
+- **Release Documentation:** [paper/README_v1.3.5.md](paper/README_v1.3.5.md) (Preserving [paper/README_v1.3.3.md](paper/README_v1.3.3.md) for historical audit traceability)
+
+### Repository Architecture & Reproduction Materials
+- **pgvector-planner-sensitivity (This Repository - Private):** Curated standalone reproduction repository hosting the 45-file operational research core (8 execution scripts, 6 library modules, 3 offline test files, and 28 captured benchmark evidence files across the 3-scale evaluation, 18-scale sweep, and 486-cell cost validation).
+- **CompressionAwareRag (Public Research Repository):** Hosts the original exploratory research history, development commits, and initial prototyping code (https://github.com/yoswinner/CompressionAwareRag/tree/research/planner-sensitivity).
 
 ---
 

@@ -186,6 +186,21 @@ As formally documented in Manuscript V1.3.3, Section VI-B Limitation (7):
 
 The following register records verified cryptographic SHA-256 hashes and byte lengths for all 22 primary publication assets, evidence files, and execution harnesses present in a fresh Git clone of this repository (synchronized with [`MANIFEST.json`](../MANIFEST.json)):
 
+
+### 6.1 Final Submission Documents (V1.3.5 Baseline)
+
+The following register records verified cryptographic SHA-256 hashes and byte lengths for the Final Submission Documents and release verification records present in this repository (synchronized with [MANIFEST.json](../MANIFEST.json)):
+
+| Artifact Path | Size (Bytes) | SHA-256 Checksum | Invariant Description |
+| :--- | :---: | :--- | :--- |
+| `paper/Precision_Aware_Vector_Retrieval_Final.pdf` | 2,364,539 | `74ff094d7a19391201f0f55a64e05004939919eba0210140010038432fa767f6` | 21 Pages, IEEE A4 Layout, 600/300 DPI figures |
+| `paper/Precision_Aware_Vector_Retrieval_Final.docx` | 3,591,550 | `f6ba6ee3b1cb5c18182ec607e2c3ce53d0432fa5e28ed4125357c08b38a2ef92` | Clean OOXML, zero footers, OMML math |
+| `paper/Precision_Aware_Vector_Retrieval_Source.md` | 129,987 | `4025ca77d3f60ee2dc528960e0eeee69e62cff5075b3f77394073cda4f567ec9` | 458 lines, 100% KaTeX math parity |
+| `paper/README_v1.3.5.md` | 3,347 | `e639556b8b7aa90c9e7599a4c90992b55df8f6d030d2b9adba18d415bf6c336e` | V1.3.5 release baseline documentation |
+| `paper/automated_test_log_v1.3.5.txt` | 3,964 | `fbbd4a5154b1785b619ec2aee595bb9960b6ecbf51b4d58f02f59cd63dd2fd12` | 15/15 Gates Passed in Reference Environment |
+
+### 6.2 Preserved Historical Milestones and Benchmark Evidence Assets
+
 | Artifact Path | Size (Bytes) | SHA-256 Checksum |
 | :--- | :---: | :--- |
 | `paper/final_research_paper_v1.3.3.pdf` | 2,357,409 | `d2a5fe8589d1c66e01e74ddb87bfcd538d4cf7c3e430973e05864e2857487c9c` |
