@@ -1,0 +1,33 @@
+test_01_input_and_provenance_hashes (__main__.PhaseR44VerificationSuite.test_01_input_and_provenance_hashes)
+Gate 1, 2, 3: Verify exact SHA-256 hashes of all 6 bundled provenance inputs and log external archive checks. ... ok
+test_02_inline_markdown_parser_unit_tests (__main__.PhaseR44VerificationSuite.test_02_inline_markdown_parser_unit_tests)
+Gate 6: Positive and negative unit tests for recursive inline Markdown and math parser. ... ok
+test_03_displayed_and_inline_math_fidelity (__main__.PhaseR44VerificationSuite.test_03_displayed_and_inline_math_fidelity)
+Gate 5: Verify all 11 displayed equations and all 241 distinct inline math expressions (557 occurrences). ... ok
+test_04_zero_delimiter_leakage (__main__.PhaseR44VerificationSuite.test_04_zero_delimiter_leakage)
+Gate 6: Confirm zero leaked Markdown or LaTeX delimiters in all paragraphs and table cells. ... ok
+test_05_numbering_and_hierarchy (__main__.PhaseR44VerificationSuite.test_05_numbering_and_hierarchy)
+Gate 7: Verify section, subsection, figure, table, footnote, and reference numbering in DOCX & PDF. ... ok
+test_06_tables_footnotes_and_group_headers (__main__.PhaseR44VerificationSuite.test_06_tables_footnotes_and_group_headers)
+Gate 8: Verify all 9 tables, Sub-Table III-A separation, Table I group rows, and all 8 table notes. ... ok
+test_07_dynamic_abstract_and_keywords (__main__.PhaseR44VerificationSuite.test_07_dynamic_abstract_and_keywords)
+Gate 9: Confirm Abstract (247 words) and Keywords are dynamically parsed from the canonical Markdown source. ... ok
+test_08_ooxml_validation_and_footer_removal (__main__.PhaseR44VerificationSuite.test_08_ooxml_validation_and_footer_removal)
+Gate 10 & 11: Validate OOXML Transitional conformance, 15 sectPr elements, relationships, and footer removal. ... ok
+test_09_metadata_and_placeholders (__main__.PhaseR44VerificationSuite.test_09_metadata_and_placeholders)
+Gate 14: Verify DOCX core/app metadata, PDF metadata, and honest author/funding/AI/repository placeholders. ... ok
+test_10_source_to_output_content_preservation (__main__.PhaseR44VerificationSuite.test_10_source_to_output_content_preservation)
+Gate 12: Complete 1-to-1 paragraph-by-paragraph (187 paragraphs) and cell-by-cell (980 cells) comparison. ... ok
+test_11_nested_lists_and_missing_figure_fallback (__main__.PhaseR44VerificationSuite.test_11_nested_lists_and_missing_figure_fallback)
+Gate 15: Verify 2-level nested bullet lists and safe missing-figure fallback behavior. ... ok
+test_12_package_and_pdf_integrity (__main__.PhaseR44VerificationSuite.test_12_package_and_pdf_integrity)
+Gate 4, 13, 16: Verify DOCX/PDF structural integrity, LibreOffice 7.4.7.2 page count, Figure 2 caption co-location, and text parity. ... ok
+test_13_v133_scientific_revisions_and_no_v132_regression (__main__.PhaseR44VerificationSuite.test_13_v133_scientific_revisions_and_no_v132_regression)
+Phase 5C Gate: Verify all 4 V1.3.3 scientific corrections are present in DOCX & PDF and zero V1.3.2 superseded phrases remain. ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 28.755s
+
+OK
+
+  [test_01] Verified 8/8 bundled provenance inputs; external archives verified=[], standalone-skipped=['phase4i_ieee_final_draft_v1.3.2.zip', 'ieee_a4_review_v1.zip', 'ieee_a4_review_v2.zip']

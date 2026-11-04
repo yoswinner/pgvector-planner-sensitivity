@@ -8,7 +8,9 @@
 
 This repository contains the authoritative research codebase, empirical benchmark data, statistical analysis pipelines, and publication figures for the study:
 
-> **"How FP16 Vector Representation and TOAST Storage Layouts Shift Query Plan Selection in PostgreSQL: An Empirical and Cost-Model Study"** (Manuscript V1.3.2).
+> **"How FP16 Vector Representation and TOAST Storage Layouts Shift Query Plan Selection in PostgreSQL: An Empirical and Cost-Model Study"** (Manuscript V1.3.3 Accepted Baseline; V1.3.2 preserved for historical audit traceability).
+
+> **Bounded Reproduction Scope**: Preserved evidence supports offline reproduction of post-collection cost-model calculations, statistics, bootstrap confidence intervals, tables and figures. It does not establish full from-scratch reproduction of corpus acquisition, embeddings or physical database/index state.
 
 ---
 
@@ -87,11 +89,22 @@ pgvector-planner-sensitivity/
 │   ├── research_results.md   # Full numerical results, tables, and latex summaries
 │   └── source_level_cost_model_reconciliation.md # PostgreSQL C source cost derivation
 ├── paper/                    # Publication manuscript and evidence assets
-│   ├── final_research_paper_source_v1.3.2.md # Complete Markdown manuscript source
+│   ├── final_research_paper_v1.3.3.pdf     # Accepted formatted IEEE A4 PDF manuscript (2.36 MB)
+│   ├── final_research_paper_v1.3.3.docx    # Accepted formatted IEEE A4 DOCX manuscript (3.59 MB)
+│   ├── final_research_paper_source_v1.3.3.md # Authoritative V1.3.3 scientific Markdown source (131 KB)
+│   ├── final_research_paper_source_v1.3.2.md # Preserved historical V1.3.2 Markdown source (130 KB)
+│   ├── build_ieee_a4_manuscript_v2.py      # Accepted v2 manuscript DOCX/PDF builder
+│   ├── verify_ieee_a4_manuscript_v2.py     # 13-test formatting and content verification suite
+│   ├── phase5c_content_preservation_and_formatting_qa_report_v1.3.3.md # Formatting QA report
+│   ├── phase5c_regeneration_changelog_v1.3.3.md # Regeneration changelog
+│   ├── phase5c_scientific_manuscript_v1.3.3_changelog.md # Scientific changelog
+│   ├── equation_and_math_verification_matrix_v2.md # Math & equation verification matrix
+│   ├── ieee_a4_review_v2_2_v1.3.3.zip      # Authoritative Phase 5C publication package (10.26 MB)
 │   ├── final_claim_evidence_traceability_v1.3.2.csv # Traceability matrix for all paper claims
 │   ├── final_reference_audit_v1.3.2.csv      # Audit of all paper citations
 │   ├── phase4i_v1.3.2_change_log.md          # Formal revision log
-│   └── figures/                              # High-resolution 300 DPI figures
+│   └── figures/                              # High-resolution 300+ DPI publication figures
+│       ├── figure_01.png, figure_02.png, figure_03.png # Unmodified 600 DPI publication figures
 │       ├── generated/        # Reproducibly generated figures (Figs 1, 2, 3)
 │       └── reference/        # Published reference baseline figures
 ├── data/raw/
@@ -207,7 +220,7 @@ flowchart TD
 ### Level 2: Live PostgreSQL Plan Sweeps & Verification (Database Required)
 *Execution Time: ~15-30 seconds. Requires PostgreSQL 18 with pgvector 0.8.4.*
 
-> **Database Prerequisite Note**: Live PostgreSQL plan sweep scripts (`run_phase4e3_scale_sweep.py` and `run_phase4f1_exact_validation.py`) evaluate query execution plans against pre-populated scale databases (`compression_aware_rag_scale_500` through `compression_aware_rag_scale_5000`). This repository bundles the 20 canonical evaluation query vectors ($q_0 \dots q_{19}$) in `recovered_query_vectors.csv`, but does **not** distribute the 10,001 document corpus embeddings (~30 MB) due to raw passage text licensing terms. Therefore, Level 2 execution requires an appropriately provisioned PostgreSQL instance with the experimental tables already present, or full corpus embeddings (see [`docs/DATA_ACQUISITION.md`](docs/DATA_ACQUISITION.md)). For immediate verification without a live database, use Level 1.
+> **Database Prerequisite Note**: Live PostgreSQL plan sweep scripts (`run_phase4e3_scale_sweep.py` and `run_phase4f1_exact_validation.py`) evaluate query execution plans against pre-populated PostgreSQL databases: `compression_aware_rag_exp` (for canonical baseline tables at $N=1,001$) and `compression_aware_rag_scale` (for multi-scale sweep tables across $N \in [500, 10000]$). This repository bundles the 20 canonical evaluation query vectors ($q_0 \dots q_{19}$) in `recovered_query_vectors.csv`, but does **not** distribute the full corpus document embeddings (10,000 database target rows from 10,001 deterministic chunks across 5,457 source documents, ~30 MB) due to upstream data licensing boundaries. Therefore, Level 2 execution requires an appropriately provisioned PostgreSQL instance with the experimental tables already present, or full corpus embeddings (see [`docs/DATA_ACQUISITION.md`](docs/DATA_ACQUISITION.md)). For immediate verification without a live database, use Level 1.
 
 1. **Verify Database Readiness**:
    ```bash

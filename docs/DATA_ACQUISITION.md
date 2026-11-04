@@ -7,29 +7,31 @@ This document describes the upstream provenance, licensing framework, acquisitio
 ## 1. Upstream Data Source and Licensing Framework
 
 The textual passages used to evaluate vector storage layouts and PostgreSQL planner sensitivity originate from the **MS MARCO (Microsoft Machine Reading Comprehension)** passage ranking collection via the BeIR benchmark distribution:
-- **Upstream Distribution**: `BeIR/msmarco` (Hugging Face Datasets)
+- **Upstream Distribution**: [`BeIR/msmarco`](https://huggingface.co/datasets/BeIR/msmarco) (Hugging Face Datasets)
 - **Configuration**: `corpus`
 - **Split**: `corpus`
-- **Original Source**: Microsoft Corporation (MS MARCO Passage Ranking Collection)
+- **Original Source**: Microsoft Corporation ([MS MARCO Project Page & Terms](https://microsoft.github.io/msmarco/))
 
-### 1.1 Dual Licensing Context and Third-Party Rights
-The data used in this study involves multiple intellectual property layers that must be strictly distinguished:
+### 1.1 Distinct Intellectual Property and Licensing Considerations
+The research involves distinct intellectual property and licensing layers that must be carefully distinguished:
 
-1. **Microsoft MS MARCO Terms of Use**:
-   - The original MS MARCO dataset was released by Microsoft Corporation under the **MS MARCO Terms of Use (Non-Commercial Research Use Agreement)**.
-   - Microsoft provides the dataset strictly for non-commercial research purposes and disclaims any ownership, license, or copyright grant over the underlying third-party web content (web pages and search snippets indexed by Bing) from which passages were extracted.
-   - Microsoft's terms permit research use but do not automatically grant downstream redistribution rights.
-2. **BeIR Benchmark Dataset Card (CC BY-SA 4.0)**:
-   - The Hugging Face dataset card for `BeIR/msmarco` displays a **Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)** tag for the curated benchmark packaging.
-   - This CC BY-SA 4.0 tag reflects the curation and formatting contributed by the BeIR authors, but it does not override Microsoft's upstream non-commercial research restrictions or third-party web content rights.
-3. **Underlying Third-Party Content Rights**:
-   - Passages extracted from the web remain subject to the copyright and rights of the respective original content authors and publishers.
+1. **Upstream Dataset Terms (Microsoft MS MARCO)**:
+   - The MS MARCO dataset was released by Microsoft Corporation under the **[MS MARCO Terms of Use (Non-Commercial Research Use Agreement)](https://microsoft.github.io/msmarco/)**.
+   - Under these terms, Microsoft provides the dataset for intended non-commercial research use, with no licence or other intellectual-property rights granted over the underlying dataset or third-party web content.
+2. **BeIR Repository Licence Declaration**:
+   - The Hugging Face repository for [`BeIR/msmarco`](https://huggingface.co/datasets/BeIR/msmarco) declares `cc-by-sa-4.0` in its repository licence metadata.
+   - This repository declaration does not independently establish rights to redistribute underlying MS MARCO passages or third-party web content.
+3. **Underlying Third-Party Web Content Rights**:
+   - The textual passages extracted from web pages and search results remain subject to the copyrights and intellectual property rights of the respective original content authors and web publishers.
+4. **Project Code and Documentation Licence (Apache 2.0)**:
+   - The **[Apache License, Version 2.0](../LICENSE)** in this repository applies strictly and exclusively to the original research software, experiment harnesses, analysis pipelines, test suites, and documentation authored for this study.
+   - It does not apply to MS MARCO passages, BeIR dataset content, or third-party dependencies, nor does it grant licences over third-party corpus content.
 
 ### 1.2 Repository Redistribution Policy
 To adhere strictly to copyright boundaries, upstream terms of use, and conservative open-science practices:
-- **No Raw or Chunked Passage Text is Bundled in this Public Repository:** The repository does not redistribute `msmarco_10k_canonical.tsv` or derived raw text chunks.
-- **Apache 2.0 Scope Exclusion:** The **Apache License, Version 2.0** governing this repository applies strictly to the original research code, experiment harnesses, analysis pipelines, test suites, and documentation authored for this study. It does **not** apply to MS MARCO, BeIR, or any third-party dependencies.
+- **No Raw or Chunked Passage Text is Bundled in this Public Repository:** The repository does not redistribute `msmarco_10k_canonical.tsv` or derived raw text chunks. Only structural metadata ([`data/raw/msmarco_10k_canonical.meta.json`](../data/raw/msmarco_10k_canonical.meta.json)) is bundled.
 - **Self-Contained Scientific Verification:** All empirical benchmark findings, statistical tests, cost-model proofs, and publication figures in this repository can be fully reproduced offline without downloading or processing raw passage text, using the curated summaries and plan captures in `results/planner_sensitivity/`.
+- **Downstream Corpus Acquisition:** Researchers wishing to perform upstream corpus reconstruction (Level 3) must acquire the data directly from the upstream distribution ([`BeIR/msmarco`](https://huggingface.co/datasets/BeIR/msmarco)) under its applicable terms.
 
 *(Note: This overview provides factual provenance and documentation of licensing context; it does not constitute formal legal counsel).*
 
@@ -104,7 +106,7 @@ To prevent ambiguity about what this repository supplies:
    - The complete set of 10,001 document corpus vector embeddings (~30 MB uncompressed float arrays).
 3. **Implications for Reproduction:**
    - **Level 1 (Offline Statistical & Visual Reproduction):** Fully self-contained. Runs immediately in ~3 seconds using the supplied CSV and JSON evidence.
-   - **Level 2 (Live PostgreSQL Plan Sweeps & Cost Verification):** Requires a running PostgreSQL instance that has already been provisioned with the experimental scale tables (`compression_aware_rag_scale_500` through `compression_aware_rag_scale_5000`), or access to the complete corpus embeddings. The repository's 20 query vectors alone cannot populate corpus tables.
+   - **Level 2 (Live PostgreSQL Plan Sweeps & Cost Verification):** Requires a running PostgreSQL instance that has already been provisioned with the experimental scale tables in `compression_aware_rag_exp` and `compression_aware_rag_scale`, or access to the complete corpus embeddings. The repository's 20 query vectors alone cannot populate corpus tables.
    - **Level 3 (Full End-to-End Re-Ingestion & Embedding):** Requires downloading the raw corpus from Hugging Face and generating embeddings via Ollama.
 
 ---
